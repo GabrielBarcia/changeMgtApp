@@ -1,0 +1,133 @@
+angular.module('testApp', [])
+.controller('myController', ['$scope', function($scope) {
+                
+                //$scope.componetSelected = 'List';  
+                //$scope.componetSelected = 'TextArea';  
+
+    $scope.items = [	{cid:"c1", cname:"List"},
+               		{cid:"c2", cname:"TextArea"},
+               		{cid:"c3", cname:"Text"}];
+
+    //$scope.items = ['TextArea','List'];
+
+}])
+.directive('myComponent', function() {
+  return {  
+
+    restric: 'A',
+    templateUrl: 'component-'+scope.type+'.html',
+    link: function(scope,elem,attrs){
+	scope.type = attributes["myComponent"];
+	console.log(scope);
+    },
+    scope : {  type : '='  }
+  };
+})
+.controller( 'stdFormCtrl', function( $scope ) {
+
+
+    // Defining the change-template array that will contain
+    // the idividual items
+
+    var Template = function( templateList ) {
+
+	// Checks if contructor is correct and start object
+	if ( templateList.constructor === Array ) {
+	    this.items = templateList || [];	
+	} else {
+	    throw 'Error - Constructor passed to template is not an array';
+	}
+    }
+
+    Template.prototype.add = function( templateItem ) {
+	//take a template item object and add it to the template items repository
+	this.items.push ( templateItem );
+    }
+
+    Template.prototype.get = function( index ) {
+	//retrieves a item on the repository and return it as json
+	var item = this.items[index];
+	return JSON.stringify(item);
+    }
+
+    Template.prototype.itemCount  = function( ) {
+	//return the numeber of items on the items collection inside template
+	return this.items.length;
+    }
+
+
+    // instantiating a template if does not exist.
+    // logic sgould be added to get templates from database 
+    
+    if (!template) {
+	console.log('Defining template');
+	templateList = [];
+	var template = new Template( templateList );
+    }
+
+    // defining template item (a single componene of the template)
+    
+    var TemplateItem = function( listOrder, itemType, data ) {
+	this.order = listOrder;
+	this.type = itemType;
+	this.data = data || {};
+    };
+
+
+    // defining form interaction and buttons actions
+
+    $scope.clearForm = function() {
+	$scope.itemData.data = {};
+    }
+
+    $scope.lstComponentSelected = function() {
+	//clearing item data so when a diferent item is selected, 
+	//information is not carried over from one item to another
+	$scope.clearForm();
+    };
+
+    $scope.add = function() {
+	
+	//get the data form the $scope into different variables
+	//in case pre-processing is need and for readeability
+	var order = template.itemCount() + 1;
+	var type = $scope.itemData.itemType;
+	var data = $scope.itemData.data;
+	
+	// add to the template - note the use of the templateitem as contructor
+	template.add( new TemplateItem( order, type, data ) );
+
+    }
+
+
+    // --- TESTING ---
+
+    /* added to the code above - should not be needed anymore 
+    templateList = [];
+    var template = new Template( templateList );
+    */
+
+    /* text code no longer needed
+       left only for reference
+
+    var listOrder = 0;
+    var itemType = 'textBox';
+    var data = { label: 'Description',
+		 mandatory: true,
+		 options: ['p1','p2','p3','p4'] };
+
+    template.add( new TemplateItem( listOrder, itemType, data) );
+
+
+    for(var i = 0; i < template.items.length; i++) {
+	console.log( 'i : ' + i );
+	console.log( 'listOrder : ' + template.items[i].order );
+	console.log( 'itemType : ' + template.items[i].type );
+	console.log( 'data.label : ' + template.items[i].data.label );
+	console.log( 'data.mandatory : ' + template.items[i].data.mandatory );
+	console.log( 'data.options : ' + template.items[i].data.options );
+    }
+    */
+
+});
+

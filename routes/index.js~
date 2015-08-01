@@ -1,0 +1,31 @@
+var express = require('express');
+var router = express.Router();
+
+
+/*
+
+module.exports = function( ) {
+    
+    var serveLogin = function() {
+	res.sendFile( 'index.html' ).end();
+    };
+
+    return {
+	serveLogin: serveLogin
+    }
+
+};
+
+*/
+
+
+
+/* GET home page. */
+
+router.get('/', function(req, res, next) {
+    console.log('app.use');
+    res.sendFile( 'index.html').end();
+});
+
+module.exports = router;
+

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="testApp">
+<head>
+  <title>Change Management</title>
+
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript" src="js/angular.js"></script>
+  <script type="text/javascript" src="testApp.js"></script>
+
+</head>
+
+<body>
+
+  <div ng-controller="myController">
+    
+    <!-- <div my-component ng-if="componetSelected == 'List'" type="List"></div>
+    <div my-component ng-if="componetSelected == 'TextArea'" type="TextArea"></div> -->
+  
+    <p>Components starts</p>
+    <div ng-repeat="item in items">
+      <!-- <p>{{item}}</p> -->
+      <my-component obj="item" ></my-component>
+    </div>
+    <p>Components ends</p>
+    
+  </div>
+
+
+  
+  
+</body>
+
+
+

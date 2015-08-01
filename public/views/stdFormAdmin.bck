@@ -1,0 +1,247 @@
+<div ng-controller="stdFormCtrl">
+	<div class="panel panel-default ">
+		<div class="panel-heading">
+			<h3 class="panel-title">Options</h3>
+		</div>
+		<div class="panel-body">
+			<div class="btn-group">
+				<a href="#" class="btn btn-default btn-sm" ng-click="add()">Add</a>
+				<a href="#" class="btn btn-default btn-sm" ng-click="clearForm()">Reset</a>
+				<a href="#" class="btn btn-default btn-sm">Preview Full Form</a>
+			</div>
+			<select class="form-control" ng-model="itemData.itemType" ng-click="lstComponentSelected( )">
+				<option value="textbox">Text Box</option>
+				<option value="textarea">Text Area</option>
+				<option value="selectlist">Select List</option>
+				<option value="selectbutton">Select Buttons</option>
+				<option value="checkbox">Check Box</option>
+				<option value="title">Title</option>
+				<option value="hr">Horizontal Line</option>
+			</select>
+			<!-- ADD OPTIONS ACCORDING TO CHOOSE ON SELECT -->
+			<!-- TEXTBOX -->
+			<div ng-if="itemData.itemType == 'textbox'">
+				<form class="form-horizontal">
+					<div class="form-group">
+						<div class="col-xs-offset-2 col-xs-10">
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" ng-model="itemData.data.mandatory" />This item is mandatory</label>
+							</div>
+						</div>
+					</div>
+					<div class="from-group">
+						<label class="col-xs-2 control-label">Label</label>
+						<div class="col-xs-10">
+							<input type="textbox" class="form-control" ng-model="itemData.data.label" placeholder="Type the component label" />
+						</div>
+					</div>
+				</form>
+			</div>
+			<!-- /TEXTBOX -->
+			<!-- TEXTAREA -->
+			<div ng-if="itemData.itemType == 'textarea'">
+				<form class="form-horizontal">
+					<div class="form-group">
+						<div class="col-xs-offset-2 col-xs-10">
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" ng-model="itemData.data.mandatory" />This item is mandatory</label>
+							</div>
+						</div>
+					</div>
+					<div class="from-group">
+						<label class="col-xs-2 control-label">Label</label>
+						<div class="col-xs-10">
+							<input type="textbox" class="form-control" ng-model="itemData.data.label" placeholder="Type the component label" />
+						</div>
+					</div>
+				</form>
+			</div>
+			<!-- /TEXTAREA -->
+			<!-- SELECTLIST -->
+			<div ng-if="itemData.itemType == 'selectlist'">
+				<form class="form-horizontal">
+					<div class="form-group">
+						<div class="col-xs-offset-2 col-xs-10">
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" ng-model="itemData.data.mandatory" />This item is mandatory</label>
+							</div>
+						</div>
+					</div>
+					<div class="from-group">
+						<label class="col-xs-2 control-label">Label</label>
+						<div class="col-xs-10">
+							<input type="textbox" class="form-control" ng-model="itemData.data.label" placeholder="Type the component label" />
+						</div>
+					</div>
+					<div class="from-group">
+						<label class="col-xs-2 control-label">List Items</label>
+						<div class="col-xs-10">
+							<textarea class="form-control" : ng-model="itemData.data.options" ng-list="/\n/" ng-trim="false" rows="5" columns="15"></textarea>
+						</div>
+					</div>
+				</form>
+			</div>
+			<!-- /SELECTLIST -->
+			<!-- SELECTBUTTONS -->
+			<div ng-if="itemData.itemType == 'selectbutton'">
+				<form class="form-horizontal">
+					<div class="form-group">
+						<div class="col-xs-offset-2 col-xs-10">
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" ng-model="itemData.data.mandatory" />This item is mandatory</label>
+							</div>
+						</div>
+					</div>
+					<div class="from-group">
+						<label class="col-xs-2 control-label">Label</label>
+						<div class="col-xs-10">
+							<input type="textbox" class="form-control" ng-model="itemData.data.label" placeholder="Type the component label" />
+						</div>
+					</div>
+					<div class="from-group">
+						<label class="col-xs-2 control-label">List Items</label>
+						<div class="col-xs-10">
+							<textarea class="form-control" : ng-model="itemData.data.options" ng-list="/\n/" ng-trim="false" rows="5" columns="15"></textarea>
+						</div>
+					</div>
+				</form>
+			</div>
+			<!-- /SELECTBUTTONS -->
+			<!-- CHECKBUTTONS -->
+			<div ng-if="itemData.itemType == 'checkbox'">
+				<form class="form-horizontal">
+					<div class="form-group">
+						<div class="col-xs-offset-2 col-xs-10">
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" ng-model="itemData.data.mandatory" />This item is mandatory</label>
+							</div>
+						</div>
+					</div>
+					<div class="from-group">
+						<label class="col-xs-2 control-label">Label</label>
+						<div class="col-xs-10">
+							<input type="textbox" class="form-control" ng-model="itemData.data.label" placeholder="Type the component label" />
+						</div>
+					</div>
+					<div class="from-group">
+						<label class="col-xs-2 control-label">List Items</label>
+						<div class="col-xs-10">
+							<textarea class="form-control" : ng-model="itemData.data.options" ng-list="/\n/" ng-trim="false" rows="5" columns="15"></textarea>
+						</div>
+					</div>
+				</form>
+			</div>
+			<!-- /CHECKBUTTONS -->
+			<!-- TITLE -->
+			<div ng-if="itemData.itemType == 'title'">
+				<form class="form-horizontal">
+					<div class="from-group">
+						<label class="col-xs-2 control-label">Title</label>
+						<div class="col-xs-10">
+							<input type="textbox" class="form-control" ng-model="itemData.data.label" placeholder="Type the component label" />
+						</div>
+					</div>
+				</form>
+			</div>
+			<!-- /TITLE -->
+		</div>
+	</div>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title">Preview</h3>
+		</div>
+		<div class="panel-body">
+
+			<!-- **** FORM PREVIEW START HERE **** -->
+			
+			
+			<form class="form-horizontal">
+				<!-- TEXTBOX -->
+				<div ng-if="itemData.itemType == 'textbox'">
+					<div class="from-group">
+						<label class="col-xs-2 control-label">
+							<span ng-if="itemData.data.mandatory" class="text-danger">*</span>{{itemData.data.label}}</label>
+						<div class="col-xs-10">
+							<input type="textbox" class="form-control" ng-required="itemData.data.mandatory" ng-model="itemData.data.content" />
+						</div>
+					</div>
+				</div>
+				<!-- /TEXTBOX -->
+				<!-- TEXTAREA -->
+				<div ng-if="itemData.itemType == 'textarea'">
+					<div class="form-group">
+						<label class="col-xs-2 control-label">
+							<span ng-if="itemData.data.mandatory" class="text-danger">*</span>{{itemData.data.label}}</label>
+						<div class="col-xs-10">
+							<textarea class="form-control" ng-required="itemData.data.mandatory" ng-model="itemData.data.content" />
+						</div>
+					</div>
+				</div>
+				<!-- /TEXTAREA -->
+				<!-- SELECTLIST -->
+				<div ng-if="itemData.itemType == 'selectlist'">
+					<div class="form-group">
+						<label class="col-xs-2 control-label">
+							<span ng-if="itemData.data.mandatory" class="text-danger">*</span>{{itemData.data.label}}</label>
+						<div class="col-xs-10">
+							<select class="form-control" ng-model="itemData.data.content">
+								<option ng-repeat="option in itemData.data.options" ng-value="option">{{option}}</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<!-- /SELECTLIST -->
+				<!-- SELECTBUTTON -->
+				<div ng-if="itemData.itemType == 'selectbutton'">
+					<div class="form-group">
+						<label class="col-xs-2 control-label">
+							<span ng-if="itemData.data.mandatory" class="text-danger">*</span>{{itemData.data.label}}</label>
+						<div class="col-xs-10">
+							<div class="radio" ng-repeat="option in itemData.data.options">
+								<label>
+									<input type="radio" ng-value="option" ng-model="itemData.data.content" />{{option}}</label>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- /SELECTBUTTON -->
+				<!-- CHECKBUTTON -->
+				<div ng-if="itemData.itemType == 'checkbox'">
+					<div class="form-group">
+						<label class="col-xs-2 control-label">
+							<span ng-if="itemData.data.mandatory" class="text-danger">*</span>{{itemData.data.label}}</label>
+						<div class="col-xs-10">
+							<div class="checkbox" ng-repeat="option in itemData.data.options">
+								<label>
+									<input type="checkbox" ng-value="option" ng-model="itemData.data.content[$index]" />{{option}}</label>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- /CHECKBUTTON -->
+				<!-- TITLE -->
+				<div ng-if="itemData.itemType == 'title'">
+					<div class="col-xs-12">
+						<h3>{{itemData.data.label}}</h3>
+					</div>
+				</div>
+				<!-- /TITLE -->
+			</form>
+			
+			<!-- **** FORM PREVIEW ENDS HERE **** -->
+			
+		</div>
+	</div>
+	<div class="row well">
+		<p>Test of render directive</p>
+		<render-form component='itemData' ng-if="itemData.itemType !== 'undefined' && itemData.itemType != null"></render-form>
+	</div>
+	<div class="well">
+		<pre>Value: {{itemData.data.content}}</pre>
+	</div>
+</div>

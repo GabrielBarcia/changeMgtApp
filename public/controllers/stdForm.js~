@@ -1,0 +1,60 @@
+angular.module('changeApp')
+
+.controller( 'stdFormCtrl', function( $scope ) {
+
+    var Template = function( templateList ) {
+
+	// Checks if contructor is correct and start object
+	if ( templateList.constructor === Array ) {
+	    this.items = templateList || [];	
+	} else {
+	    throw 'Error - Constructor passed to template is not an array';
+	}
+    }
+
+    Template.prototype.add = function( templateItem ) {
+	this.items.push ( templateItem );
+    }
+
+    var TemplateItem = function( listOrder, itemType, data ) {
+	this.order = listOrder;
+	this.type = itemType;
+	this.data = data || {};
+    };
+
+
+    $scope.lstComponentSelected = function() {
+	//clearing item data so when a diferent item is selected, 
+	//information is not carried over from one item to another
+	$scope.itemData.data = {};
+    };
+
+
+
+    // --- TESTING ---
+
+    templateList = [];
+    var template = new Template( templateList );
+
+
+    var listOrder = 0;
+    var itemType = 'textBox';
+    var data = { label: 'Description',
+		 mandatory: true,
+		 options: ['p1','p2','p3','p4'] };
+
+    template.add( new TemplateItem( listOrder, itemType, data) );
+
+
+    for(var i = 0; i < template.items.length; i++) {
+	console.log( 'i : ' + i );
+	console.log( 'listOrder : ' + template.items[i].order );
+	console.log( 'itemType : ' + template.items[i].type );
+	console.log( 'data.label : ' + template.items[i].data.label );
+	console.log( 'data.mandatory : ' + template.items[i].data.mandatory );
+	console.log( 'data.options : ' + template.items[i].data.options );
+    }
+
+
+});
+

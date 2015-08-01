@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="testApp">
+<head>
+  <title>Change Management</title>
+
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/angular.js"></script>
+  <script type="text/javascript" src="testApp.js"></script>
+
+  <style type="text/css" media="screen">
+    .top-buffer { margin-top:15px; }
+  </style>
+
+</head>
+
+<body>
+
+  <div ng-controller="myController">
+    
+
+    <!-- <div my-component ng-if="componetSelected == 'List'" type="List"></div>
+    <div my-component ng-if="componetSelected == 'TextArea'" type="TextArea"></div> -->
+  
+    <div ng-repeat="item in items">
+      <!--<p>{{item}}</p>-->
+      <my-component type="{{item.cname}}" ></my-component>
+    </div>
+  </div>
+
+
+  
+  
+</body>
+
+
+
