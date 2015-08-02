@@ -1,5 +1,5 @@
 angular.module('loginToApp', [])
-.constant ( 'loginURL', 'http://localhost:5000/users/loginRequest')
+.constant ( 'loginURL', '/users/loginRequest')
 .controller ( 'loginCtrl', function( $scope, $http, $window, loginURL ) {
     
     $scope.data = [

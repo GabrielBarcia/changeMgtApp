@@ -28,4 +28,15 @@ angular.module('changeApp')
 		templateUrl: "/app/components/form/createComponentView.html"
 
     };
+})
+// REMOVE THIS DIRECTIVE - ONLY FOR DEBUG 
+.directive('peekFormDirective', function (FormServ) {
+    return {
+        scope: {},
+		template: "<pre>{{formData}}</pre>",
+		restrict: 'E',
+		link: function (scope, elem, attrs) {
+            scope.formData = FormServ.currentFormData.getAllItems();
+        }
+    };
 });
