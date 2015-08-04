@@ -50,7 +50,7 @@ angular.module('changeApp', [])
 
 
 })
-// .controller('modalController', function ($scope, FormServ) {
+// .controller('modalCtrl', function ($scope, FormServ) {
     
 //     var template;
     

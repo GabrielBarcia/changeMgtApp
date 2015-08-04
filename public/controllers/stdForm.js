@@ -8,11 +8,7 @@ angular.module('changeApp')
     // logic sgould be added to get templates from database 
     
     if (!$scope.template) {
-
-        var templateList = [];
-        FormServ.currentFormData = new FormServ.Template(templateList);
         $scope.template = FormServ.currentFormData;
-        
     }
     
     $scope.itemData = {

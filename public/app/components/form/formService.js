@@ -7,6 +7,7 @@ angular.module('changeApp')
 
         // Checks if contructor is correct and start object
         if (templateList.constructor === Array) {
+            console.log('Creating new form template...');
             this.items = templateList || []; //the [] is quite useless here
         } else {
             throw 'Error - Constructor passed to template is not an array';
