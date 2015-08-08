@@ -1,5 +1,31 @@
 <div class="panel-body">
+	
+	<div  ng-show="confirmDeletion()" class="alert alert-danger" role="alert">
+		Please confirm that you want to delete the component
+		<button class="btn btn-sm btn-default pull-right" ng-click="deletionConfirmed($parent.$index)">Confirm</button>
+		<button class="btn btn-sm btn-default pull-right" ng-click="deletionCancelled()">Cancel</button>
+	</div>
+	
 	<form class="form-horizontal">
+		
+		<!-- using $parent.$index such as clickUpButton( $parent.$index ) because ng-repreat is 
+			on the parent directive, therefore the $index is tracked there and not here -->
+		
+		<div class="btn-group-vertical btn-group-sm pull-right">
+			<button type="button" class="btn btn-default" ng-click="clickUpButton( $parent.$index )">
+					<span class="glyphicon glyphicon-arrow-up"></span>
+			</button>
+			<button type="button" class="btn btn-default" ng-click="clickDownButton( $parent.$index )">
+				<span class="glyphicon glyphicon-arrow-down" ></span>
+			</button>
+			<button type="button" class="btn btn-default" ng-click="clickEditButton( $parent.$index )">
+				<span class="glyphicon glyphicon-pencil"></span>
+			</button>
+			<button type="button" class="btn btn-default" ng-click="clickDeleteButton( $parent.$index )">
+				<span class="glyphicon glyphicon-trash"></span>
+			</button>
+		</div>
+		
 		<!-- TEXTBOX -->
 		<div ng-if="componentData.itemType == 'textbox'">
 			<div class="from-group">
